@@ -15,6 +15,7 @@
       font-family: system-ui,-apple-system,"Hiragino Sans","Noto Sans JP","Segoe UI",sans-serif;
       background: radial-gradient(#e9dfd6 1.2px, transparent 1.2px) 0 0/26px 26px, var(--bg);
       padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom) 16px;
+      font-size:16px;
     }
     .shell{max-width:430px; margin:0 auto; padding:14px 0 28px;}
     .phone{background:rgba(255,255,255,.75); border-radius:40px; padding:14px; box-shadow:var(--shadow); backdrop-filter:blur(6px);}
@@ -23,23 +24,23 @@
     .top{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:2px 2px 10px;}
     .xbtn{width:44px; height:44px; border-radius:16px; border:0; background:#f1f3f5; font-size:22px; display:grid; place-items:center; touch-action:manipulation;}
     .meta{flex:1; display:flex; flex-direction:column; gap:6px; padding:0 4px;}
-    .meta .line{font-weight:800; font-size:13px; color:#51606f;}
+    .meta .line{font-weight:800; font-size:15px; color:#51606f;}
     .bar{height:10px; border-radius:99px; background:#edf1f4; overflow:hidden;}
     .bar > i{display:block; height:100%; width:0%; background:var(--accent); border-radius:99px; transition:width .25s ease;}
 
     .home{display:flex; flex-direction:column; gap:18px; padding:10px 6px 24px; align-items:center; text-align:center;}
-    .home h1{margin:10px 0 0; font-size:30px; line-height:1.2;}
-    .home p{margin:0; color:var(--muted); font-size:14px;}
+    .home h1{margin:10px 0 0; font-size:34px; line-height:1.2;}
+    .home p{margin:0; color:var(--muted); font-size:16px;}
     .chips{display:flex; gap:10px; margin-top:10px;}
-    .chip{min-width:120px; padding:18px 20px; border-radius:20px; border:2px solid #e8edf1; background:#fff; font-weight:900; font-size:20px; touch-action:manipulation;}
+    .chip{min-width:124px; padding:20px 22px; border-radius:20px; border:2px solid #e8edf1; background:#fff; font-weight:900; font-size:22px; touch-action:manipulation;}
     .chip[data-on="1"]{border-color:rgba(242,138,0,.55); box-shadow:0 10px 20px rgba(242,138,0,.12);}
-    .primary{width:100%; margin-top:10px; padding:24px 20px; border-radius:22px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:24px; box-shadow:0 14px 28px rgba(242,138,0,.25); touch-action:manipulation;}
+    .primary{width:100%; margin-top:10px; padding:26px 22px; border-radius:22px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:26px; box-shadow:0 14px 28px rgba(242,138,0,.25); touch-action:manipulation;}
     .primary:active{transform:translateY(1px);}
     .link{border:0; background:transparent; color:#51606f; font-weight:800; padding:10px 12px; touch-action:manipulation;}
 
     .qcard{margin:6px auto 14px; padding:18px 16px; max-width:360px; background:#fbf3e9; border-radius:18px; text-align:center;}
-    .qcard .jp{font-size:26px; font-weight:950; line-height:1.15;}
-    .qcard .en{margin-top:8px; font-size:14px; color:#5b6a78; font-weight:800;}
+    .qcard .jp{font-size:30px; font-weight:950; line-height:1.15;}
+    .qcard .en{margin-top:8px; font-size:16px; color:#5b6a78; font-weight:800;}
 
     .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:8px 2px 2px;}
     .opt{
@@ -66,14 +67,14 @@
     .overlay{position:absolute; inset:0; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(255,255,255,.74); backdrop-filter:blur(6px);}
     .overlay[data-on="1"]{display:flex;}
     .fb{width:100%; max-width:360px; background:#fff; border-radius:26px; box-shadow:var(--shadow); padding:18px 16px; text-align:center;}
-    .fb .big{font-weight:950; font-size:34px; margin:6px 0 4px;}
+    .fb .big{font-weight:950; font-size:38px; margin:6px 0 4px;}
     .fb .small{color:var(--muted); font-weight:850; margin:0 0 12px;}
-    .next{width:100%; margin-top:14px; padding:16px 18px; border-radius:18px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:18px; touch-action:manipulation;}
+    .next{width:100%; margin-top:14px; padding:18px 20px; border-radius:18px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:20px; touch-action:manipulation;}
 
     .result{display:flex; flex-direction:column; align-items:center; gap:14px; padding:16px 10px 22px; text-align:center;}
-    .trophy{width:220px; height:220px; border-radius:24px; background:radial-gradient(circle at 30% 20%, #fff6e6, #f7eddc 60%, #f2e6d5); display:grid; place-items:center; box-shadow:0 18px 45px rgba(0,0,0,.08);}
-    .headline{font-weight:950; font-size:22px; color:var(--accent); margin-top:4px;}
-    .scoreline{font-weight:950; font-size:34px; line-height:1.1;}
+    .trophy{width:90%; max-width:260px; aspect-ratio:1/1; height:auto; border-radius:24px; background:radial-gradient(circle at 30% 20%, #fff6e6, #f7eddc 60%, #f2e6d5); display:grid; place-items:center; box-shadow:0 18px 45px rgba(0,0,0,.08);}
+    .headline{font-weight:950; font-size:26px; color:var(--accent); margin-top:4px;}
+    .scoreline{font-weight:950; font-size:38px; line-height:1.1;}
     .stars{font-size:22px; letter-spacing:6px; color:#f2b300;}
   
 
@@ -81,27 +82,25 @@
       .shell{max-width:90vw;}
       .screen{min-height:74vh; padding:20px;}
       .home{gap:20px;}
-      .home h1{font-size:36px;}
-      .home p{font-size:16px;}
+      .home h1{font-size:38px;}
+      .home p{font-size:18px;}
       .chips{gap:14px;}
-      .chip{min-width:140px; padding:20px 24px; font-size:22px;}
-      .primary{padding:26px 22px; font-size:26px;}
+      .chip{min-width:148px; padding:22px 26px; font-size:24px;}
+      .primary{padding:28px 24px; font-size:28px;}
 
       .qcard{max-width:420px; padding:20px 18px;}
-      .qcard .jp{font-size:32px;}
-      .qcard .en{font-size:16px;}
+      .qcard .jp{font-size:36px;}
+      .qcard .en{font-size:18px;}
 
       .grid{gap:18px;}
       .opt{min-height:190px;}
-      .circle{width:110px; height:110px;}
-      .circle img{width:96px; height:96px;}
 
-      .fb .big{font-size:38px;}
-      .next{font-size:20px; padding:18px 20px;}
+      .fb .big{font-size:42px;}
+      .next{font-size:22px; padding:20px 22px;}
 
       .trophy{width:260px; height:260px;}
-      .headline{font-size:26px;}
-      .scoreline{font-size:38px;}
+      .headline{font-size:28px;}
+      .scoreline{font-size:42px;}
     }
 
 
@@ -112,6 +111,13 @@
       .grid{grid-template-columns:repeat(4, 1fr);}
       .opt{min-height:170px;}
     }
+
+
+    .optImg{max-width:80%; max-height:80%; width:auto; height:auto; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.20));}
+
+    .confetti{position:absolute; inset:0; pointer-events:none; overflow:hidden;}
+    .confetti span{position:absolute; top:-10%; width:10px; height:18px; background:linear-gradient(180deg,#f7d774,#e7b11a); opacity:.95; animation:confetti-fall 1.8s linear forwards; transform:translateY(0) rotate(var(--rot,0deg)); border-radius:2px;}
+    @keyframes confetti-fall{to{transform:translateY(120%) rotate(var(--rot,0deg));}}
 
 </style>
 </head>
@@ -211,7 +217,7 @@ function renderQuestion(){
     <div class="grid" id="grid">
       ${q.options.map((opt, idx)=>`
         <button class="opt" data-idx="${idx}" style="background:${OPTION_COLORS[idx]}">
-          <div class="circle"><img src="${esc(opt.img)}" alt="" loading="eager"></div>
+          <img class="optImg" src="${esc(opt.img)}" alt="" loading="eager">
           <div class="label">hidden</div>
         </button>
       `).join("")}
@@ -246,8 +252,8 @@ function onAnswer(chosen){
   });
 
   const overlay = document.getElementById("overlay");
-  document.getElementById("fbTitle").textContent = ok ? "Great Job!" : "ざんねん";
-  document.getElementById("fbSub").textContent = ok ? "That is correct!" : "ちがうよ";
+  document.getElementById("fbTitle").textContent = ok ? "正解！" : "ざんねん";
+  document.getElementById("fbSub").textContent = ok ? "やったね" : "ちがうよ";
   const isLast = (state.idx + 1 >= state.total);
   const next = document.getElementById("nextBtn");
   next.textContent = isLast ? "けっかを見る →" : "つぎのもんだい →";
@@ -261,6 +267,24 @@ function onAnswer(chosen){
   overlay.dataset.on="1";
 }
 
+
+function launchConfetti(){
+  const screen = document.getElementById("screen");
+  if(!screen) return;
+  const confetti = document.createElement("div");
+  confetti.className = "confetti";
+  const pieces = 36;
+  for(let i=0;i<pieces;i++){
+    const span = document.createElement("span");
+    span.style.left = (Math.random()*100).toFixed(2) + "%";
+    span.style.animationDelay = (Math.random()*0.6).toFixed(2) + "s";
+    span.style.animationDuration = (1.6 + Math.random()*0.8).toFixed(2) + "s";
+    span.style.setProperty("--rot", (Math.random()*360).toFixed(0) + "deg");
+    confetti.appendChild(span);
+  }
+  screen.appendChild(confetti);
+  setTimeout(()=>{ confetti.remove(); }, 2400);
+}
 function renderResult(){
   const total = state.total;
   const score = state.correct;
@@ -283,6 +307,7 @@ function renderResult(){
       <button class="link" id="toHomeBtn">⌂ おうちへかえる</button>
     </div>
   `;
+  launchConfetti();
   document.getElementById("homeBtn").onclick = renderHome;
   document.getElementById("toHomeBtn").onclick = renderHome;
   document.getElementById("againBtn").onclick = startQuiz;
