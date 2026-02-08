@@ -400,6 +400,206 @@
         }
       ],
       "answerIndex": 2
+    },
+    {
+      "id": "q21",
+      "prompt": "でんきぽっと はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_b.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_o.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_d.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_t.webp"
+        }
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": "q22",
+      "prompt": "ほっとかーぺっと はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_c.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_a.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_c.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_p.webp"
+        }
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": "q23",
+      "prompt": "おーぶんれんじ はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_a.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_e.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_w.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_o.webp"
+        }
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": "q24",
+      "prompt": "ほーむべーかりー はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_m.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_n.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_j.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_s.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q25",
+      "prompt": "でんきあつりょくなべ はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_w.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_b.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_k.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_v.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q26",
+      "prompt": "じゅーさー はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q02_b.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_l.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_h.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_a.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q27",
+      "prompt": "でんどうはぶらし はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_q.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_f.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_v.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_n.webp"
+        }
+      ],
+      "answerIndex": 3
+    },
+    {
+      "id": "q28",
+      "prompt": "ふとんかんそうき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_p.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_u.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_g.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_o.webp"
+        }
+      ],
+      "answerIndex": 3
+    },
+    {
+      "id": "q29",
+      "prompt": "じょしつき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_e.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_b.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_p.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_n.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q30",
+      "prompt": "ほっとぷれーと はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_c.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_o.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_m.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_s.webp"
+        }
+      ],
+      "answerIndex": 3
     }
   ]
 }
