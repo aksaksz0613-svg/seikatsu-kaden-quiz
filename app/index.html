@@ -71,11 +71,11 @@
     .fb .small{color:var(--muted); font-weight:850; margin:0 0 12px;}
     .next{width:100%; margin-top:14px; padding:18px 20px; border-radius:18px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:20px; touch-action:manipulation;}
 
-    .result{display:flex; flex-direction:column; align-items:center; gap:14px; padding:16px 10px 22px; text-align:center;}
-    .trophy{width:90%; max-width:260px; aspect-ratio:1/1; height:auto; border-radius:24px; background:radial-gradient(circle at 30% 20%, #fff6e6, #f7eddc 60%, #f2e6d5); display:grid; place-items:center; box-shadow:0 18px 45px rgba(0,0,0,.08);}
+    .result{display:flex; flex-direction:column; align-items:center; gap:16px; padding:16px 10px 22px; text-align:center; background:radial-gradient(circle at 20% 10%, #fff7d6, #ffffff 55%, #fbe9d7); border-radius:22px; box-shadow:inset 0 0 0 2px rgba(242,138,0,.15);}
+    .trophy{width:95%; max-width:320px; aspect-ratio:1/1; height:auto; border-radius:26px; background:radial-gradient(circle at 30% 20%, #fff6e6, #f7eddc 55%, #f2e6d5); display:grid; place-items:center; box-shadow:0 22px 55px rgba(0,0,0,.12), 0 0 28px rgba(242,138,0,.25); animation:trophy-pop .6s ease-out;}
     .headline{font-weight:950; font-size:26px; color:var(--accent); margin-top:4px;}
     .scoreline{font-weight:950; font-size:38px; line-height:1.1;}
-    .stars{font-size:22px; letter-spacing:6px; color:#f2b300;}
+    .stars{font-size:26px; letter-spacing:6px; color:#f2b300; text-shadow:0 0 12px rgba(242,179,0,.35); animation:sparkle .8s ease-out;}
   
 
     @media (min-width: 768px) and (max-width: 1024px){
@@ -113,11 +113,14 @@
     }
 
 
-    .optImg{max-width:80%; max-height:80%; width:auto; height:auto; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.20));}
+    .optImg{max-width:90%; max-height:90%; width:auto; height:auto; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.20));}
 
     .confetti{position:absolute; inset:0; pointer-events:none; overflow:hidden;}
     .confetti span{position:absolute; top:-10%; width:10px; height:18px; background:linear-gradient(180deg,#f7d774,#e7b11a); opacity:.95; animation:confetti-fall 1.8s linear forwards; transform:translateY(0) rotate(var(--rot,0deg)); border-radius:2px;}
     @keyframes confetti-fall{to{transform:translateY(120%) rotate(var(--rot,0deg));}}
+
+    @keyframes trophy-pop{0%{transform:scale(.92);} 100%{transform:scale(1);}}
+    @keyframes sparkle{0%{opacity:0; transform:translateY(8px);} 100%{opacity:1; transform:translateY(0);}}
 
 </style>
 </head>
