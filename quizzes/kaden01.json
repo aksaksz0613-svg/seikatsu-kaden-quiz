@@ -1,0 +1,17 @@
+{
+  "title": "生活家電クイズ",
+  "questions": [
+    {
+      "id": "q01",
+      "prompt": "せんたくき はどれ？",
+      "sub": "",
+      "options": [
+        { "img": "../assets/kaden01/q01_a.webp" },
+        { "img": "../assets/kaden01/q01_b.webp" },
+        { "img": "../assets/kaden01/q01_c.webp" },
+        { "img": "../assets/kaden01/q01_d.webp" }
+      ],
+      "answerIndex": 1
+    }
+  ]
+}

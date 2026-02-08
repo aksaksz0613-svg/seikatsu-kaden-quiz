@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Quiz</title>
+  <style>
+    :root{
+      --bg:#f6f2ed; --card:#fff; --ink:#17212b; --muted:#6b7a8a;
+      --accent:#f28a00; --shadow: 0 18px 45px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; color:var(--ink);
+      font-family: system-ui,-apple-system,"Hiragino Sans","Noto Sans JP","Segoe UI",sans-serif;
+      background: radial-gradient(#e9dfd6 1.2px, transparent 1.2px) 0 0/26px 26px, var(--bg);
+      padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom) 16px;
+    }
+    .shell{max-width:430px; margin:0 auto; padding:14px 0 28px;}
+    .phone{background:rgba(255,255,255,.75); border-radius:40px; padding:14px; box-shadow:var(--shadow); backdrop-filter:blur(6px);}
+    .screen{background:var(--card); border-radius:34px; min-height:78vh; padding:16px; position:relative; overflow:hidden;}
+
+    .top{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:2px 2px 10px;}
+    .xbtn{width:44px; height:44px; border-radius:16px; border:0; background:#f1f3f5; font-size:22px; display:grid; place-items:center; touch-action:manipulation;}
+    .meta{flex:1; display:flex; flex-direction:column; gap:6px; padding:0 4px;}
+    .meta .line{font-weight:800; font-size:13px; color:#51606f;}
+    .bar{height:10px; border-radius:99px; background:#edf1f4; overflow:hidden;}
+    .bar > i{display:block; height:100%; width:0%; background:var(--accent); border-radius:99px; transition:width .25s ease;}
+
+    .home{display:flex; flex-direction:column; gap:16px; padding:10px 6px 24px; align-items:center; text-align:center;}
+    .home h1{margin:10px 0 0; font-size:22px;}
+    .home p{margin:0; color:var(--muted); font-size:14px;}
+    .chips{display:flex; gap:10px; margin-top:10px;}
+    .chip{min-width:84px; padding:12px 14px; border-radius:16px; border:2px solid #e8edf1; background:#fff; font-weight:900; touch-action:manipulation;}
+    .chip[data-on="1"]{border-color:rgba(242,138,0,.55); box-shadow:0 10px 20px rgba(242,138,0,.12);}
+    .primary{width:100%; margin-top:10px; padding:16px 18px; border-radius:18px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:18px; box-shadow:0 14px 28px rgba(242,138,0,.25); touch-action:manipulation;}
+    .primary:active{transform:translateY(1px);}
+    .link{border:0; background:transparent; color:#51606f; font-weight:800; padding:10px 12px; touch-action:manipulation;}
+
+    .qcard{margin:6px auto 14px; padding:18px 16px; max-width:360px; background:#fbf3e9; border-radius:18px; text-align:center;}
+    .qcard .jp{font-size:26px; font-weight:950; line-height:1.15;}
+    .qcard .en{margin-top:8px; font-size:14px; color:#5b6a78; font-weight:800;}
+
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:8px 2px 2px;}
+    .opt{
+      border:0; border-radius:26px; padding:18px 14px; min-height:160px;
+      box-shadow:0 14px 30px rgba(0,0,0,.10);
+      display:flex; align-items:center; justify-content:center;
+      touch-action:manipulation;
+    }
+    .opt:active{transform:translateY(1px);}
+    .circle{
+      width:82px; height:82px; border-radius:999px;
+      background:rgba(255,255,255,.75);
+      display:grid; place-items:center;
+      box-shadow:inset 0 0 0 6px rgba(255,255,255,.25);
+    }
+    .circle img{width:62px; height:62px; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.20));}
+
+    /* 画像だけ表示：ラベル非表示（必要なら残してもOK） */
+    .opt .label{display:none;}
+
+    .opt[data-state="correct"]{outline:4px solid rgba(255,255,255,.92);}
+    .opt[data-state="wrong"]{opacity:.55;}
+
+    .overlay{position:absolute; inset:0; display:none; align-items:center; justify-content:center; padding:20px; background:rgba(255,255,255,.74); backdrop-filter:blur(6px);}
+    .overlay[data-on="1"]{display:flex;}
+    .fb{width:100%; max-width:360px; background:#fff; border-radius:26px; box-shadow:var(--shadow); padding:18px 16px; text-align:center;}
+    .fb .big{font-weight:950; font-size:34px; margin:6px 0 4px;}
+    .fb .small{color:var(--muted); font-weight:850; margin:0 0 12px;}
+    .next{width:100%; margin-top:14px; padding:16px 18px; border-radius:18px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:18px; touch-action:manipulation;}
+
+    .result{display:flex; flex-direction:column; align-items:center; gap:14px; padding:16px 10px 22px; text-align:center;}
+    .trophy{width:220px; height:220px; border-radius:24px; background:radial-gradient(circle at 30% 20%, #fff6e6, #f7eddc 60%, #f2e6d5); display:grid; place-items:center; box-shadow:0 18px 45px rgba(0,0,0,.08);}
+    .headline{font-weight:950; font-size:22px; color:var(--accent); margin-top:4px;}
+    .scoreline{font-weight:950; font-size:34px; line-height:1.1;}
+    .stars{font-size:22px; letter-spacing:6px; color:#f2b300;}
+  </style>
+</head>
+<body>
+  <div class="shell"><div class="phone"><div class="screen" id="screen"></div></div></div>
+
+<script>
+const COUNTS = [5,10,20];
+const OPTION_COLORS = ["#ff6b6b","#37c9c2","#ffe66b","#8ee0d3"]; // 固定色
+const DEFAULT_QUIZ_ID = "kaden01"; // /app/?quiz=kaden01
+
+const state = { quizId:null, quiz:null, total:10, idx:0, correct:0, locked:false };
+const $screen = document.getElementById("screen");
+const esc = (s)=> (s??"").toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+(async function boot(){
+  const qs = new URLSearchParams(location.search);
+  state.quizId = qs.get("quiz") || DEFAULT_QUIZ_ID;
+  state.quiz = await loadQuiz(state.quizId);
+  renderHome();
+})().catch(err=>{
+  console.error(err);
+  $screen.innerHTML = `<div style="padding:16px;font-weight:800;">読み込みに失敗しました。</div>`;
+});
+
+async function loadQuiz(id){
+  // キャッシュが気になる場合は ?v= を付けて更新（必要なら手動で数字を変える）
+  const url = `../quizzes/${id}.json`;
+  const res = await fetch(url, {cache:"no-cache"});
+  if(!res.ok) throw new Error("quiz json not found: "+url);
+  const data = await res.json();
+  if(!data?.questions?.length) throw new Error("questions empty");
+  for(const q of data.questions){
+    if(!q?.prompt || !Array.isArray(q.options) || q.options.length!==4) throw new Error("invalid question");
+    if(typeof q.answerIndex!=="number" || q.answerIndex<0 || q.answerIndex>3) throw new Error("invalid answerIndex");
+    for(const opt of q.options){ if(!opt?.img) throw new Error("option img missing"); }
+  }
+  return data;
+}
+
+function renderHome(){
+  state.idx=0; state.correct=0; state.locked=false;
+  const title = esc(state.quiz.title || "クイズ");
+  $screen.innerHTML = `
+    <div class="home">
+      <h1>${title}</h1>
+      <p>もんすうをえらんでね（順番固定 / ランダムなし）</p>
+      <div class="chips" id="chips">
+        ${COUNTS.map(n=>`<button class="chip" data-n="${n}" data-on="${n===state.total?1:0}">${n} もん</button>`).join("")}
+      </div>
+      <button class="primary" id="startBtn">はじめる</button>
+      <button class="link" id="reloadBtn">クイズを読み直す</button>
+    </div>
+  `;
+  document.getElementById("chips").onclick = (e)=>{
+    const btn = e.target.closest("button[data-n]");
+    if(!btn) return;
+    const n = parseInt(btn.dataset.n,10);
+    state.total = n;
+    document.querySelectorAll(".chip").forEach(b=>b.dataset.on = (b.dataset.n==n ? "1":"0"));
+  };
+  document.getElementById("startBtn").onclick = startQuiz;
+  document.getElementById("reloadBtn").onclick = async ()=>{
+    state.quiz = await loadQuiz(state.quizId);
+    renderHome();
+  };
+}
+
+function startQuiz(){
+  const max = state.quiz.questions.length;
+  state.total = Math.min(state.total, max);
+  state.idx=0; state.correct=0; state.locked=false;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const total = state.total;
+  const i = state.idx;
+  const q = state.quiz.questions[i]; // 順番固定
+  const pct = Math.round((i/total)*100);
+
+  $screen.innerHTML = `
+    <div class="top">
+      <button class="xbtn" id="quitBtn">×</button>
+      <div class="meta">
+        <div class="line">QUESTION ${i+1} / ${total}</div>
+        <div class="bar"><i style="width:${pct}%"></i></div>
+      </div>
+      <div style="width:44px;height:44px;"></div>
+    </div>
+
+    <div class="qcard">
+      <div class="jp">${esc(q.prompt)}</div>
+      ${q.sub ? `<div class="en">${esc(q.sub)}</div>` : ``}
+    </div>
+
+    <div class="grid" id="grid">
+      ${q.options.map((opt, idx)=>`
+        <button class="opt" data-idx="${idx}" style="background:${OPTION_COLORS[idx]}">
+          <div class="circle"><img src="${esc(opt.img)}" alt="" loading="eager"></div>
+          <div class="label">hidden</div>
+        </button>
+      `).join("")}
+    </div>
+
+    <div class="overlay" id="overlay" data-on="0">
+      <div class="fb">
+        <div class="big" id="fbTitle"></div>
+        <p class="small" id="fbSub"></p>
+        <button class="next" id="nextBtn"></button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById("quitBtn").onclick = ()=>{ if(confirm("やめてホームにもどる？")) renderHome(); };
+  document.getElementById("grid").onclick = (e)=>{
+    const btn = e.target.closest(".opt");
+    if(!btn || state.locked) return;
+    onAnswer(parseInt(btn.dataset.idx,10));
+  };
+}
+
+function onAnswer(chosen){
+  state.locked = true;
+  const q = state.quiz.questions[state.idx];
+  const ok = (chosen === q.answerIndex);
+  if(ok) state.correct++;
+
+  document.querySelectorAll(".opt").forEach((b, idx)=>{
+    b.dataset.state = (idx===q.answerIndex) ? "correct" : "wrong";
+    b.disabled = true;
+  });
+
+  const overlay = document.getElementById("overlay");
+  document.getElementById("fbTitle").textContent = ok ? "Great Job!" : "ざんねん";
+  document.getElementById("fbSub").textContent = ok ? "That is correct!" : "ちがうよ";
+  const isLast = (state.idx + 1 >= state.total);
+  const next = document.getElementById("nextBtn");
+  next.textContent = isLast ? "けっかを見る →" : "つぎのもんだい →";
+  next.onclick = ()=>{
+    overlay.dataset.on="0";
+    state.locked=false;
+    state.idx++;
+    if(state.idx >= state.total) renderResult();
+    else renderQuestion();
+  };
+  overlay.dataset.on="1";
+}
+
+function renderResult(){
+  const total = state.total;
+  const score = state.correct;
+  const starCount = Math.max(0, Math.min(5, Math.round((score/total)*5)));
+  const stars = "★★★★★☆☆☆☆☆".slice(5-starCount, 10-starCount);
+
+  $screen.innerHTML = `
+    <div class="result">
+      <div class="top" style="width:100%;">
+        <button class="xbtn" id="homeBtn">×</button>
+        <div style="flex:1"></div><div style="width:44px;height:44px;"></div>
+      </div>
+
+      <div class="trophy"><div style="font-size:76px;">🏆</div></div>
+      <div class="headline">やったね！</div>
+      <div class="scoreline">ぜんぶで<br><span style="color:var(--accent)">${score}</span> もん<br>せいかい！</div>
+      <div class="stars">${esc(stars)}</div>
+
+      <button class="primary" id="againBtn">↻ もういちど あそぶ</button>
+      <button class="link" id="toHomeBtn">⌂ おうちへかえる</button>
+    </div>
+  `;
+  document.getElementById("homeBtn").onclick = renderHome;
+  document.getElementById("toHomeBtn").onclick = renderHome;
+  document.getElementById("againBtn").onclick = startQuiz;
+}
+</script>
+</body>
+</html>
