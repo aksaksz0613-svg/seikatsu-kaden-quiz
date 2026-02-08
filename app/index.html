@@ -27,13 +27,13 @@
     .bar{height:10px; border-radius:99px; background:#edf1f4; overflow:hidden;}
     .bar > i{display:block; height:100%; width:0%; background:var(--accent); border-radius:99px; transition:width .25s ease;}
 
-    .home{display:flex; flex-direction:column; gap:16px; padding:10px 6px 24px; align-items:center; text-align:center;}
-    .home h1{margin:10px 0 0; font-size:22px;}
+    .home{display:flex; flex-direction:column; gap:18px; padding:10px 6px 24px; align-items:center; text-align:center;}
+    .home h1{margin:10px 0 0; font-size:30px; line-height:1.2;}
     .home p{margin:0; color:var(--muted); font-size:14px;}
     .chips{display:flex; gap:10px; margin-top:10px;}
-    .chip{min-width:84px; padding:12px 14px; border-radius:16px; border:2px solid #e8edf1; background:#fff; font-weight:900; touch-action:manipulation;}
+    .chip{min-width:108px; padding:16px 18px; border-radius:18px; border:2px solid #e8edf1; background:#fff; font-weight:900; font-size:18px; touch-action:manipulation;}
     .chip[data-on="1"]{border-color:rgba(242,138,0,.55); box-shadow:0 10px 20px rgba(242,138,0,.12);}
-    .primary{width:100%; margin-top:10px; padding:16px 18px; border-radius:18px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:18px; box-shadow:0 14px 28px rgba(242,138,0,.25); touch-action:manipulation;}
+    .primary{width:100%; margin-top:10px; padding:20px 18px; border-radius:20px; border:0; background:var(--accent); color:#fff; font-weight:950; font-size:22px; box-shadow:0 14px 28px rgba(242,138,0,.25); touch-action:manipulation;}
     .primary:active{transform:translateY(1px);}
     .link{border:0; background:transparent; color:#51606f; font-weight:800; padding:10px 12px; touch-action:manipulation;}
 
@@ -120,7 +120,7 @@ function renderHome(){
   $screen.innerHTML = `
     <div class="home">
       <h1>${title}</h1>
-      <p>もんすうをえらんでね（順番固定 / ランダムなし）</p>
+      <p>もんだいすうをえらんでね</p>
       <div class="chips" id="chips">
         ${COUNTS.map(n=>`<button class="chip" data-n="${n}" data-on="${n===state.total?1:0}">${n} もん</button>`).join("")}
       </div>
