@@ -6,12 +6,400 @@
       "prompt": "せんたくき はどれ？",
       "sub": "",
       "options": [
-        { "img": "../assets/kaden01/q01_a.webp" },
-        { "img": "../assets/kaden01/q01_b.webp" },
-        { "img": "../assets/kaden01/q01_c.webp" },
-        { "img": "../assets/kaden01/q01_d.webp" }
+        {
+          "img": "../assets/kaden01/q01_m.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_v.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_g.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_y.webp"
+        }
       ],
       "answerIndex": 1
+    },
+    {
+      "id": "q02",
+      "prompt": "れいぞうこ はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_u.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_d.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_m.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_w.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q03",
+      "prompt": "すいはんき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_k.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_t.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_y.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_l.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q04",
+      "prompt": "そうじき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_i.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_s.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_v.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_g.webp"
+        }
+      ],
+      "answerIndex": 3
+    },
+    {
+      "id": "q05",
+      "prompt": "ろぼっとそうじき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_o.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_i.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_d.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_g.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q06",
+      "prompt": "せんぷうき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_x.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_z.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_h.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_d.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q07",
+      "prompt": "たいじゅうけい はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_u.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_f.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_e.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_n.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q08",
+      "prompt": "IHくっきんぐひーたー はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_e.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_s.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_t.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_k.webp"
+        }
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": "q09",
+      "prompt": "くうきせいじょうき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_u.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_e.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_d.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_x.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q10",
+      "prompt": "えあこん はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_z.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_a.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_d.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_x.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q11",
+      "prompt": "といれ はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_u.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_w.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_b.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_f.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q12",
+      "prompt": "どらいやー はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_n.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_c.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_d.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_r.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q13",
+      "prompt": "でんきしぇーばー はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q02_d.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_c.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_n.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_g.webp"
+        }
+      ],
+      "answerIndex": 0
+    },
+    {
+      "id": "q14",
+      "prompt": "かしつき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_d.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_o.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_e.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_x.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q15",
+      "prompt": "しょっきあらいき はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_v.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_u.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_z.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_t.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q16",
+      "prompt": "こたつ はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_s.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_w.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_t.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_z.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q17",
+      "prompt": "ふぁんひーたー はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_h.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_x.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_o.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_d.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q18",
+      "prompt": "しーりんぐらいと はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_y.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_z.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_a.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_f.webp"
+        }
+      ],
+      "answerIndex": 1
+    },
+    {
+      "id": "q19",
+      "prompt": "こーひーめーかー はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_l.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_y.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_t.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_s.webp"
+        }
+      ],
+      "answerIndex": 2
+    },
+    {
+      "id": "q20",
+      "prompt": "あいろん はどれ？",
+      "sub": "",
+      "options": [
+        {
+          "img": "../assets/kaden01/q01_r.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_n.webp"
+        },
+        {
+          "img": "../assets/kaden01/q02_c.webp"
+        },
+        {
+          "img": "../assets/kaden01/q01_s.webp"
+        }
+      ],
+      "answerIndex": 0
     }
   ]
 }
