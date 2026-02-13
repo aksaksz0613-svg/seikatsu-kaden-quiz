@@ -122,6 +122,15 @@
     @keyframes trophy-pop{0%{transform:scale(.92);} 100%{transform:scale(1);}}
     @keyframes sparkle{0%{opacity:0; transform:translateY(8px);} 100%{opacity:1; transform:translateY(0);}}
 
+
+    .levels{display:flex; gap:10px; width:100%;}
+    .levelBtn{flex:1; padding:14px 12px; border-radius:16px; border:2px solid #e8edf1; background:#fff; font-weight:900; font-size:18px; touch-action:manipulation;}
+    .levelBtn[data-on="1"]{border-color:rgba(242,138,0,.55); box-shadow:0 10px 20px rgba(242,138,0,.12);} 
+    .levelBtn[disabled]{opacity:.45;}
+    .coming{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:24px; min-height:60vh; text-align:center;}
+    .coming .big{font-size:28px; font-weight:950;}
+    .coming .small{color:var(--muted); font-size:16px; font-weight:800;}
+
 </style>
 </head>
 <body>
@@ -129,18 +138,35 @@
 
 <script>
 const COUNTS = [10,20,30];
+const LEVELS = [
+  { id: 1, label: "レベル1", quizId: "kaden01" },
+  { id: 2, label: "レベル2", quizId: "denji" },
+  { id: 3, label: "レベル3", quizId: null },
+];
+
 const OPTION_COLORS = ["#ff6b6b","#4d96ff","#ffd93d","#6bcf63"]; // 固定色（4色差別化）
 const DEFAULT_QUIZ_ID = "kaden01"; // /app/?quiz=kaden01
 
-const state = { quizId:null, quiz:null, total:10, idx:0, correct:0, locked:false };
+const state = { quizId:null, quiz:null, level:1, total:10, idx:0, correct:0, locked:false };
 const $screen = document.getElementById("screen");
 const esc = (s)=> (s??"").toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 (async function boot(){
   const qs = new URLSearchParams(location.search);
-  state.quizId = qs.get("quiz") || DEFAULT_QUIZ_ID;
+  const lvl = parseInt(qs.get("level") || "1", 10);
+  state.level = [1,2,3].includes(lvl) ? lvl : 1;
+  const levelCfg = LEVELS.find(l=>l.id===state.level);
+  state.quizId = qs.get("quiz") || (levelCfg?.quizId ?? DEFAULT_QUIZ_ID);
+  if(state.level === 3){
+    renderComingSoon();
+    return;
+  }
   state.quiz = await loadQuiz(state.quizId);
   renderHome();
+})().catch(err=>{
+  console.error(err);
+  $screen.innerHTML = `<div style="padding:16px;font-weight:800;">読み込みに失敗しました。</div>`;
+});
 })().catch(err=>{
   console.error(err);
   $screen.innerHTML = `<div style="padding:16px;font-weight:800;">読み込みに失敗しました。</div>`;
@@ -161,29 +187,70 @@ async function loadQuiz(id){
   return data;
 }
 
+
 function renderHome(){
   state.idx=0; state.correct=0; state.locked=false;
-  const title = esc(state.quiz.title || "クイズ");
+  const title = esc(state.quiz?.title || "クイズ");
   $screen.innerHTML = `
     <div class="home">
       <h1>${title}</h1>
+      <div class="levels" id="levels">
+        ${LEVELS.map(l=>`<button class="levelBtn" data-lvl="${l.id}" data-on="${l.id===state.level?1:0}">${l.label}</button>`).join("")}
+      </div>
       <p>もんだいすうをえらんでね</p>
       <div class="chips" id="chips">
-        ${COUNTS.map(n=>`<button class="chip" data-n="${n}" data-on="${n===state.total?1:0}">${n} もん</button>`).join("")}
+        ${COUNTS.map(n=>`<button class="chip" data-n="${n}" data-on="${n===state.total?1:0}" ${state.level===2 && n!==10 ? 'disabled' : ''}>${n} もん</button>`).join("")}
       </div>
       <button class="primary" id="startBtn">はじめる</button>
       <button class="link" id="reloadBtn">クイズを読み直す</button>
     </div>
   `;
+
+  document.getElementById("levels").onclick = async (e)=>{
+    const btn = e.target.closest("button[data-lvl]");
+    if(!btn) return;
+    const lvl = parseInt(btn.dataset.lvl,10);
+    if(lvl === 3){
+      state.level = 3;
+      renderComingSoon();
+      return;
+    }
+    state.level = lvl;
+    const levelCfg = LEVELS.find(l=>l.id===lvl);
+    state.quizId = levelCfg?.quizId || DEFAULT_QUIZ_ID;
+    state.quiz = await loadQuiz(state.quizId);
+    state.total = (lvl===2) ? 10 : state.total;
+    renderHome();
+  };
+
   document.getElementById("chips").onclick = (e)=>{
     const btn = e.target.closest("button[data-n]");
-    if(!btn) return;
+    if(!btn || btn.disabled) return;
     const n = parseInt(btn.dataset.n,10);
     state.total = n;
     document.querySelectorAll(".chip").forEach(b=>b.dataset.on = (b.dataset.n==n ? "1":"0"));
   };
   document.getElementById("startBtn").onclick = startQuiz;
   document.getElementById("reloadBtn").onclick = async ()=>{
+    if(state.level === 3) return;
+    state.quiz = await loadQuiz(state.quizId);
+    renderHome();
+  };
+}
+
+
+function renderComingSoon(){
+  $screen.innerHTML = `
+    <div class="coming">
+      <div class="big">レベル3は準備中</div>
+      <div class="small">もうすこし待ってね</div>
+      <button class="primary" id="backHomeBtn">ホームにもどる</button>
+    </div>
+  `;
+  document.getElementById("backHomeBtn").onclick = async ()=>{
+    state.level = 1;
+    const levelCfg = LEVELS.find(l=>l.id===1);
+    state.quizId = levelCfg?.quizId || DEFAULT_QUIZ_ID;
     state.quiz = await loadQuiz(state.quizId);
     renderHome();
   };
@@ -192,6 +259,7 @@ function renderHome(){
 function startQuiz(){
   const max = state.quiz.questions.length;
   state.total = Math.min(state.total, max);
+  if(state.level===2) state.total = Math.min(state.total, 10);
   state.idx=0; state.correct=0; state.locked=false;
   renderQuestion();
 }
