@@ -167,10 +167,6 @@ const esc = (s)=> (s??"").toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
   console.error(err);
   $screen.innerHTML = `<div style="padding:16px;font-weight:800;">読み込みに失敗しました。</div>`;
 });
-})().catch(err=>{
-  console.error(err);
-  $screen.innerHTML = `<div style="padding:16px;font-weight:800;">読み込みに失敗しました。</div>`;
-});
 
 async function loadQuiz(id){
   // キャッシュが気になる場合は ?v= を付けて更新（必要なら手動で数字を変える）
