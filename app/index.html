@@ -131,6 +131,11 @@
     .coming .big{font-size:28px; font-weight:950;}
     .coming .small{color:var(--muted); font-size:16px; font-weight:800;}
 
+
+    .grid[data-variant="vertical"]{grid-template-columns:1fr; gap:16px;}
+    .grid[data-variant="vertical"] .opt{min-height:110px; align-items:flex-start; justify-content:flex-start; padding:18px; text-align:left;}
+    .optText{font-size:20px; font-weight:900; line-height:1.35; color:var(--ink);}    
+
 </style>
 </head>
 <body>
@@ -141,7 +146,7 @@ const COUNTS = [10,20,30];
 const LEVELS = [
   { id: 1, label: "レベル1", quizId: "kaden01" },
   { id: 2, label: "レベル2", quizId: "denji" },
-  { id: 3, label: "レベル3", quizId: null },
+  { id: 3, label: "レベル3", quizId: "level3" },
 ];
 
 const OPTION_COLORS = ["#ff6b6b","#4d96ff","#ffd93d","#6bcf63"]; // 固定色（4色差別化）
@@ -157,10 +162,6 @@ const esc = (s)=> (s??"").toString().replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&l
   state.level = [1,2,3].includes(lvl) ? lvl : 1;
   const levelCfg = LEVELS.find(l=>l.id===state.level);
   state.quizId = qs.get("quiz") || (levelCfg?.quizId ?? DEFAULT_QUIZ_ID);
-  if(state.level === 3){
-    renderComingSoon();
-    return;
-  }
   state.quiz = await loadQuiz(state.quizId);
   renderHome();
 })().catch(err=>{
@@ -206,11 +207,6 @@ function renderHome(){
     const btn = e.target.closest("button[data-lvl]");
     if(!btn) return;
     const lvl = parseInt(btn.dataset.lvl,10);
-    if(lvl === 3){
-      state.level = 3;
-      renderComingSoon();
-      return;
-    }
     state.level = lvl;
     const levelCfg = LEVELS.find(l=>l.id===lvl);
     state.quizId = levelCfg?.quizId || DEFAULT_QUIZ_ID;
@@ -228,29 +224,11 @@ function renderHome(){
   };
   document.getElementById("startBtn").onclick = startQuiz;
   document.getElementById("reloadBtn").onclick = async ()=>{
-    if(state.level === 3) return;
     state.quiz = await loadQuiz(state.quizId);
     renderHome();
   };
 }
 
-
-function renderComingSoon(){
-  $screen.innerHTML = `
-    <div class="coming">
-      <div class="big">レベル3は準備中</div>
-      <div class="small">もうすこし待ってね</div>
-      <button class="primary" id="backHomeBtn">ホームにもどる</button>
-    </div>
-  `;
-  document.getElementById("backHomeBtn").onclick = async ()=>{
-    state.level = 1;
-    const levelCfg = LEVELS.find(l=>l.id===1);
-    state.quizId = levelCfg?.quizId || DEFAULT_QUIZ_ID;
-    state.quiz = await loadQuiz(state.quizId);
-    renderHome();
-  };
-}
 
 function startQuiz(){
   const max = state.quiz.questions.length;
@@ -281,10 +259,11 @@ function renderQuestion(){
       ${q.sub ? `<div class="en">${esc(q.sub)}</div>` : ``}
     </div>
 
-    <div class="grid" id="grid">
+    <div class="grid" id="grid" data-variant="${state.level===3 ? "vertical" : "grid"}">
       ${q.options.map((opt, idx)=>`
         <button class="opt" data-idx="${idx}" style="background:${OPTION_COLORS[idx]}">
-          <img class="optImg" src="${esc(opt.img)}" alt="" loading="eager">
+          ${opt.img ? `<img class="optImg" src="${esc(opt.img)}" alt="" loading="eager">` : ``}
+          ${opt.text ? `<div class="optText">${esc(opt.text)}</div>` : ``}
           <div class="label">hidden</div>
         </button>
       `).join("")}
