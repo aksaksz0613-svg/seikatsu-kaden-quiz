@@ -179,7 +179,7 @@ async function loadQuiz(id){
   for(const q of data.questions){
     if(!q?.prompt || !Array.isArray(q.options) || q.options.length!==4) throw new Error("invalid question");
     if(typeof q.answerIndex!=="number" || q.answerIndex<0 || q.answerIndex>3) throw new Error("invalid answerIndex");
-    for(const opt of q.options){ if(!opt?.img) throw new Error("option img missing"); }
+    for(const opt of q.options){ if(!opt?.img && !opt?.text) throw new Error("option content missing"); }
   }
   return data;
 }
